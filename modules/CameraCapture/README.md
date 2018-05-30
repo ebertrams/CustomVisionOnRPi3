@@ -1,10 +1,11 @@
 # Azure IoT Edge Camera Capture module
 
 This container is an IoT Edge module that can read a video stream from a camera or from a video file and optionally send frames to IoT Edge module for processing. It forwards all processing results to the Edge Hub.
-It is a Linux Docker container made for AMD64 processors.
+It is a Linux Docker container made for AMD64and ARM  processors written in Python.
 
-## Get started
-Build the .Dockerfile and deploy it to an Azure IoT Edge device.
+## Additional configurations
+You can use the current conifguration set in the deployment manifest file or update the configuration of this module as follow:
+
 The camera mount path or the video file must be provided through the VIDEO_PATH environment variable:
 - Camera mount:
     - In the deployment manifest:
@@ -14,11 +15,11 @@ The camera mount path or the video file must be provided through the VIDEO_PATH 
 - Video file:
     - Make sure to include the video file in the .Dockerfile:
     ```docker
-    ADD ./MyVideos/ ./MyVideos/.
+    ADD ./test/ .
     ```
     - In the deployment manifest:
     ```json
-    "createOptions": "{\"Env\":[\"VIDEO_PATH=./MyVideo.mp4\"]}"
+    "createOptions": "{\"Env\":[\"VIDEO_PATH=./AppleAndBanana.mp4\"]}"
     ```
 
 ## Optional parameters
